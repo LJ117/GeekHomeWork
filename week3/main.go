@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func serverStart() error {
+func serverStart(stop chan struct{}) error {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(resp http.ResponseWriter, request *http.Request) {
 		fmt.Fprintln(resp, "start http server")
